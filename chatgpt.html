@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form class="prompt-form">
+        <input type="text" placeholder="enter your message" class="promptinput">
+        <button type="submit">Add</button>
+    </form>
+
+    <script>
+        const promptForm = document.querySelector(".prompt-form");
+        const promptinput = document.querySelector(".promptinput");
+        let userMessage = '';
+
+        const handleSubmit = (e) =>{
+            e.preventDefault();
+            userMessage = promptinput.value.trim()
+            if (!promptinput) return;
+            console.log(userMessage);
+            
+        }
+        promptForm.addEventListener("submit",handleSubmit);
+    </script>
+</body>
+</html>

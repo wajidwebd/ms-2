@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="myname">
+        <input type="number" id="myage">
+        <button type="button" id="addbtn">Add</button>
+    </form>
+
+    <script>
+        const myname = document.getElementById("myname");
+        const myage = document.getElementById("myage");
+        const addbtn = document.getElementById("addbtn");
+        function loadfunction(params) {
+            let data = sessionStorage.getItem("formData") || {};
+            if (data.length > 0) {
+                data = JSON.parse(data);
+                myname.value = data.myname;
+                myage.value = data.myage
+            }
+        }
+        loadfunction() 
+        addbtn.addEventListener("click",()=>{
+            const formdata = JSON.parse(sessionStorage.getItem("formData"))|| {};
+            formdata.myname = myname.value;
+            formdata.myage = myage.value
+            sessionStorage.setItem("formData",JSON.stringify(formdata))
+        })
+
+    </script>
+</body>
+</html>
